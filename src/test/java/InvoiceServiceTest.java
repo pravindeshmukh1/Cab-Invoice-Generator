@@ -24,7 +24,6 @@ public class InvoiceServiceTest {
         double distance = 0.4;
         int time = 0;
         double totalFare = invoiceService.calculateTotalFare(distance, time);
-        Assert.assertEquals(5.0, totalFare, 0.0);
+        Assert.assertEquals(5, totalFare, 0.0);
     }
-
 }
