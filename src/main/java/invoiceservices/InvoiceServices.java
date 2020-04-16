@@ -1,5 +1,7 @@
 package invoiceservices;
 
+import cabrideinvoice.Ride;
+
 public class InvoiceServices {
 
     private static final double MINIMUM_FARE = 5;
@@ -9,5 +11,13 @@ public class InvoiceServices {
     public double calculateTotalFare(double distance, int time) {
         double totalFare = distance * MINIMUM_COST_PER_KILOMETER + time * COST_PER_TIME;
         return Math.max(totalFare, MINIMUM_FARE);
+    }
+
+    public double calculateTotalFare(Ride[] rides) {
+        int totalFare = 0;
+        for (Ride ride : rides) {
+            totalFare += this.calculateTotalFare(ride.distance, ride.time);
+        }
+        return totalFare;
     }
 }

@@ -1,3 +1,4 @@
+import cabrideinvoice.Ride;
 import invoiceservices.InvoiceServices;
 import org.junit.Assert;
 import org.junit.Before;
@@ -25,5 +26,13 @@ public class InvoiceServiceTest {
         int time = 0;
         double totalFare = invoiceService.calculateTotalFare(distance, time);
         Assert.assertEquals(5, totalFare, 0.0);
+    }
+
+    @Test
+    public void givenMultipleDistanceAndTime_shouldReturnTotalFareSummary() {
+        Ride[] rides = {new Ride(2.0, 5),
+                new Ride(0.1, 1)};
+        double totalFare = invoiceService.calculateTotalFare(rides);
+        Assert.assertEquals(30, totalFare, 0.0);
     }
 }
