@@ -1,5 +1,6 @@
 package invoiceservices;
 
+import cabrideinvoice.InvoiceSummary;
 import cabrideinvoice.Ride;
 
 public class InvoiceServices {
@@ -13,11 +14,11 @@ public class InvoiceServices {
         return Math.max(totalFare, MINIMUM_FARE);
     }
 
-    public double calculateTotalFare(Ride[] rides) {
+    public InvoiceSummary calculateTotalFare(Ride[] rides) {
         int totalFare = 0;
         for (Ride ride : rides) {
             totalFare += this.calculateTotalFare(ride.distance, ride.time);
         }
-        return totalFare;
+        return new InvoiceSummary(rides.length, totalFare);
     }
 }

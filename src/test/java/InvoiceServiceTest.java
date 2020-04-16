@@ -1,3 +1,4 @@
+import cabrideinvoice.InvoiceSummary;
 import cabrideinvoice.Ride;
 import invoiceservices.InvoiceServices;
 import org.junit.Assert;
@@ -29,10 +30,11 @@ public class InvoiceServiceTest {
     }
 
     @Test
-    public void givenMultipleDistanceAndTime_shouldReturnTotalFareSummary() {
+    public void givenMultipleDistanceAndTime_shouldReturnTotalInvoiceSummary() {
         Ride[] rides = {new Ride(2.0, 5),
                 new Ride(0.1, 1)};
-        double totalFare = invoiceService.calculateTotalFare(rides);
-        Assert.assertEquals(30, totalFare, 0.0);
+        InvoiceSummary invoiceSummary = invoiceService.calculateTotalFare(rides);
+        InvoiceSummary expectedInvoiceSummery = new InvoiceSummary(2, 30);
+        Assert.assertEquals(invoiceSummary, expectedInvoiceSummery);
     }
 }
