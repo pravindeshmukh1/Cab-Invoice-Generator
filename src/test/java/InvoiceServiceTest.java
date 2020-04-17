@@ -37,4 +37,19 @@ public class InvoiceServiceTest {
         InvoiceSummary expectedInvoiceSummery = new InvoiceSummary(2, 30, 15);
         Assert.assertEquals(invoiceSummary, expectedInvoiceSummery);
     }
+
+    @Test
+    public void givenUserIdAndRides_shouldReturnTotalInvoiceSummary() {
+        try {
+            String userId = "pdd.com";
+            Ride[] rides = {new Ride(2.0, 5),
+                    new Ride(0.1, 1)};
+            invoiceService.addRide(userId, rides);
+            InvoiceSummary invoiceSummary = this.invoiceService.getInvoiceSummary(userId);
+            InvoiceSummary expectedInvoiceSummary = new InvoiceSummary(2, 30, 15);
+            Assert.assertEquals(expectedInvoiceSummary, invoiceSummary);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }
