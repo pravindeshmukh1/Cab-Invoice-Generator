@@ -19,6 +19,6 @@ public class InvoiceServices {
         for (Ride ride : rides) {
             totalFare += this.calculateTotalFare(ride.distance, ride.time);
         }
-        return new InvoiceSummary(rides.length, totalFare);
+        return new InvoiceSummary(rides.length, totalFare, totalFare / rides.length);
     }
 }

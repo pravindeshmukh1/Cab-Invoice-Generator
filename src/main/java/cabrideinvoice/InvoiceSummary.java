@@ -5,10 +5,10 @@ public class InvoiceSummary {
     private double totalFare;
     private int numberOfRides;
 
-    public InvoiceSummary(int numberOfRides, double totalFare) {
+    public InvoiceSummary(int numberOfRides, double totalFare,double averageFare ) {
         this.numberOfRides = numberOfRides;
         this.totalFare = totalFare;
-        this.averageFare = this.totalFare / this.numberOfRides;
+        this.averageFare = averageFare;
     }
 
     @Override
